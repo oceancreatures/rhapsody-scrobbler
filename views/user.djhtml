@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Rhapsody Scrobbler</title>
+    <link rel="stylesheet" href="static/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="static/blueprint/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]><link rel="stylesheet" href="static/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+    <link rel="stylesheet" href="static/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="static/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
+  </head>
+  <body>
+    <div class="container">
+    <h1>
+      Rhapsody Scrobbler <small>//</small>
+      <small class="alt" style="font-size: 0.6em"">Transmit your Rhapsody habit on Last.FM</small>
+    </h1>
+
+    <div class="span-11 colborder">
+      {% if user.submitted_tracks %}
+        <h2>You've scrobbled...</h2>
+        <p>{{ user.num_submitted }} track(s).</p>
+
+        <h2>Most recently...</h2>
+        <ul>
+          {% for track in user.submitted_tracks %}
+            <li>{{ track}}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="notice">
+          <p>No tracks submitted yet, you may want to check your username, password
+          or RSS url.</p>
+
+          If you just signed up, please wait about 20 minutes for the next
+          update cycle.
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="span-12 last">
+    {% if error %}
+      <div class="error">
+        {{error}}
+      </div>
+    {% endif %}
+    {% if success %}
+      <div class="success">
+        {{success}}
+      </div>
+    {% endif %}
+
+      <h2>Update your info?</h2>
+      <form action="/users" method="post">
+        <input type="hidden" name="old_password" value="{{ user.password|escape }}" />
+        <label>Last.fm username</label><br />
+        <input type="text" name="username" value="{{ user.username|escape }}" class="text" readonly style="color: #999; border-color: #BBB""/>
+        <br /><br />
+
+        <label>Last.fm password</label><br />
+        <input type="password" name="password" class="text" />
+        <br /><br />
+
+        <label>Rhapsody RSS URL</label><br />
+        <input type="text" name="rss_url" value="{{ user.rss_url|escape }}" class="text" />
+        <br /><br />
+
+        <button type="submit" class="positive"><img src="/static/user_go.png" height=16 width=16 /> Sign up</button>
+      </form>
+    </div>
+
+    </div>
+  </body>
+</html>

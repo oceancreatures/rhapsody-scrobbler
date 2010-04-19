@@ -1,0 +1,4 @@
+cron:
+- description: Updates last.fm with the latest information.
+  url: /tasks/ping-lastfm
+  schedule: every 10 minutes

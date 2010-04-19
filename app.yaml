@@ -1,0 +1,13 @@
+application: rhapsody-scrobbler
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /tasks/ping-lastfm
+  script: handlers/ping.py
+  login: admin
+- url: .*
+  script: handlers/handlers.py
