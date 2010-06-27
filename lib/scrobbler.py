@@ -34,7 +34,7 @@ def update(user, auto_save=True):
         track = dict(artist_name=tracks_played['entries'][i]['artist'],
                      song_title=tracks_played['entries'][i]['track'],
                      length=tracks_played['entries'][i]['duration'],
-                     date_played=int(time.mktime(tracks_played['entries'][i]['updated_parsed'])) - 28800,
+                     date_played=int(time.mktime(tracks_played['entries'][i]['updated_parsed'])),
                      album=tracks_played['entries'][i]['album'])
         poster.add_track(**track)
         user.submitted_tracks.insert(0, '%s - %s' % (track['artist_name'], track['song_title']))
