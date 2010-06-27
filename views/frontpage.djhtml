@@ -33,7 +33,7 @@
         <input type="password" name="password" class="text" />
         <br /><br />
 
-        <label>Rhapsody RSS URL</label><br />
+        <label>Rhapsody Recently Played Tracks URL [<a href="http://www.rhapsody.com/myrhapsody/feeds.html" target="_blank">?</a>]</label><br />
         <input type="text" name="rss_url" class="text" />
         <br /><br />
 
