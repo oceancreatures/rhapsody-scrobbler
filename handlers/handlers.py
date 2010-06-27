@@ -37,6 +37,9 @@ class FrontpageHandler(BaseHandler):
         self.render('frontpage')
 
 class UsersHandler(BaseHandler):
+    def get(self):
+        self.post()
+
     def post(self):
         def md5_string(string):
             return hashlib.md5(string).hexdigest()
@@ -47,11 +50,23 @@ class UsersHandler(BaseHandler):
             **self.build_params(username=str,
                                 password=md5_string,
                                 rss_url=str))
+
+        # for edit and delete actions
         if self.request.get('old_password') and user.password == self.request.get('old_password'):
-            user.password = md5_string(self.request.get('password'))
-            user.rss_url = self.request.get('rss_url')
-            user.put
-            self.render('user', user=user, success='Your info was updated!')
+            if self.request.get('delete'):
+                if self.request.get('delete') == 'true':
+                    user.delete()
+                    self.render('frontpage', success='You have been removed!')
+                else:
+                    self.render('user',
+                                user=user,
+                                error='Please confirm you want to delete yourself!')
+            else:
+              user.password = md5_string(self.request.get('password'))
+              user.rss_url = self.request.get('rss_url')
+              user.put()
+              self.render('user', user=user, success='Your info was updated!')
+        # just signed up
         elif user.password == md5_string(self.request.get('password')):
             self.render('user', user=user)
         else:
@@ -59,6 +74,9 @@ class UsersHandler(BaseHandler):
             self.render('frontpage', error="Username/password not recognized!")
 
 class SubmitHandler(BaseHandler):
+    '''This is meant to be used in an AJAX action to indicate a correct
+    username/password, but is unimplemented. Sigh
+    '''
     def get(self, username):
         # redirect to tick or error image.
         pass

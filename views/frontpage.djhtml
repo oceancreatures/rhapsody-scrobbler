@@ -21,6 +21,11 @@
         {{error}}
       </div>
     {% endif %}
+    {% if success %}
+      <div class="success">
+        {{success}}
+      </div>
+    {% endif %}
 
     <div class="span-11 colborder">
       <h2>Signup</h2>

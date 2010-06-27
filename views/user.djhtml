@@ -54,7 +54,7 @@
       <form action="/users" method="post">
         <input type="hidden" name="old_password" value="{{ user.password|escape }}" />
         <label>Last.fm username</label><br />
-        <input type="text" name="username" value="{{ user.username|escape }}" class="text" readonly style="color: #999; border-color: #BBB""/>
+        <input type="text" name="username" value="{{ user.username|escape }}" class="text" readonly style="color: #999; border-color: #BBB"/>
         <br /><br />
 
         <label>Last.fm password</label><br />
@@ -66,6 +66,19 @@
         <br /><br />
 
         <button type="submit" class="positive"><img src="/static/user_go.png" height=16 width=16 /> Update</button>
+      </form>
+      <br style="clear: both"/>
+      <h2>Delete me forever!</h2>
+      <form action="/users" method="post">
+        You can delete yourself: <em>be careful, there is no undo</em>.<br />
+        <input type="hidden" name="old_password" value="{{ user.password|escape }}" />
+        <input type="hidden" name="username" value="{{ user.username|escape }}" />
+        <label>
+          <input type="checkbox" name="delete" value="true" />
+          Yes, I am really sure.
+        </label><br />
+        <input type="hidden" name="delete" value="false" />
+        <button type="submit" class="negative"><img src="/static/exclamation.png" height=16 width=16 /> Delete me!</button>
       </form>
     </div>
 
