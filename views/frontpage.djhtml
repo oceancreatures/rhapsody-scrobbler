@@ -44,7 +44,7 @@
         <input type="text" name="rss_url" class="text" />
         <br /><br />
 
-        <button type="submit" class="positive"><img src="/static/user_go.png" height=16 width=16 /> Sign up</button>
+        <button type="submit" class="positive"><img src="/static/images/user_go.png" height=16 width=16 /> Sign up</button>
       </form>
     </div>
 
@@ -59,7 +59,7 @@
         <input type="password" name="password" class="text" />
         <br /><br />
 
-        <button type="submit"><img src="/static/user_go.png" height=16 width=16 /> Log in</button>
+        <button type="submit"><img src="/static/images/user_go.png" height=16 width=16 /> Log in</button>
       </form>
     </div>
     </div>

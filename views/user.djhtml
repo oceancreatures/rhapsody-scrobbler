@@ -67,7 +67,7 @@
         <input type="text" name="rss_url" value="{{ user.rss_url|escape }}" class="text" />
         <br /><br />
 
-        <button type="submit" class="positive"><img src="/static/user_go.png" height=16 width=16 /> Update</button>
+        <button type="submit" class="positive"><img src="/static/images/user_go.png" height=16 width=16 /> Update</button>
       </form>
       <br style="clear: both"/>
       <h2>Delete me forever!</h2>
@@ -80,7 +80,7 @@
           Yes, I am really sure.
         </label><br />
         <input type="hidden" name="delete" value="false" />
-        <button type="submit" class="negative"><img src="/static/exclamation.png" height=16 width=16 /> Delete me!</button>
+        <button type="submit" class="negative"><img src="/static/images/exclamation.png" height=16 width=16 /> Delete me!</button>
       </form>
     </div>
 
