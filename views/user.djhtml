@@ -3,11 +3,13 @@
 <html>
   <head>
     <title>Rhapsody Scrobbler</title>
-    <link rel="stylesheet" href="static/blueprint/screen.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="static/blueprint/print.css" type="text/css" media="print" />
-    <!--[if lt IE 8]><link rel="stylesheet" href="static/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
-    <link rel="stylesheet" href="static/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="static/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/stylesheets/blueprint/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/stylesheets/blueprint/print.css" type="text/css" media="print" />
+    <!--[if lt IE 8]><link rel="stylesheet" href="/static/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
+    <link rel="stylesheet" href="/static/stylesheets/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/static/stylesheets/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
+    <script type="text/javascript"
+            src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
