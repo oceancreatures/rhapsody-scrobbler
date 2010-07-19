@@ -79,9 +79,10 @@ class LoginCheckHandler(BaseHandler):
     '''Used by AJAX-y requests to check the validity of lastfm credentials.
     '''
 
-    def get(self, username):
+    def get(self):
         self.response.headers['Content-Type'] = 'application/json'
 
+        username = self.request.get('username')
         password = self.request.get('password')
         if not password:
             user = User.get_by_key_name(username)
@@ -102,7 +103,7 @@ class LoginCheckHandler(BaseHandler):
 
 application = webapp.WSGIApplication(
     [('/', FrontpageHandler),
-     ('/login_check/(.+)', LoginCheckHandler),
+     ('/login_check', LoginCheckHandler),
      ('/users', UsersHandler)],
     debug=True)
 

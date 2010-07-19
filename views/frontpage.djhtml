@@ -8,8 +8,23 @@
     <!--[if lt IE 8]><link rel="stylesheet" href="/static/stylesheets/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
     <link rel="stylesheet" href="/static/stylesheets/blueprint/plugins/fancy-type/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/static/stylesheets/blueprint/plugins/buttons/screen.css" type="text/css" media="screen, projection" />
-    <script type="text/javascript"
-            src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css" media="screen, projection" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+  $('.signup input[name=password]').blur(function() {
+    var $u = $('.signup input[name=username]');
+    var $p = $('.signup input[name=password]');
+    $p.removeClass('success error').addClass('loading');
+    $.getJSON(
+        '/login_check',
+        {'username': $u.val(), 'password': $p.val()},
+        function(data) {
+          $p.addClass(data.isOk ? 'success' : 'error');
+        });
+  });
+});
+    </script>
   </head>
   <body>
     <div class="container">
@@ -31,7 +46,7 @@
 
     <div class="span-11 colborder">
       <h2>Signup</h2>
-      <form action="/users" method="post">
+      <form action="/users" method="post" class="signup">
         <label>Last.fm username</label><br />
         <input type="text" name="username" class="text" />
         <br /><br />
