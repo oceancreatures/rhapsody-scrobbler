@@ -14,15 +14,17 @@ from models.user import User
 def update(user, auto_save=True):
     logging.debug('Checking in for %s' % user.username)
 
+    poster = audioscrobbler.AudioScrobblerPost(username=user.username,
+                                               password=user.password,
+                                               password_is_md5=True,
+                                               verbose=True)
+    poster.auth()
+
     contents = urlfetch.fetch(user.rss_url).content
     # hack around the namespacing.
     contents = contents.replace('<rhap:', '<').replace('</rhap:', '</')
 
     tracks_played = feedparser.parse(contents)
-    poster = audioscrobbler.AudioScrobblerPost(username=user.username,
-                                                  password=user.password,
-                                                  password_is_md5=True,
-                                                  verbose=True)
     for i in xrange(len(tracks_played['entries']) - 1, -1, -1):
         # skip a track we've already submitted
         # see this date ridiculousness? Bleh.
